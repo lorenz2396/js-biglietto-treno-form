@@ -1,45 +1,43 @@
-// Chiedi all'utente il numero di chilometri da percorrere
-const km = parseInt (prompt("Inserisci il numero di chilometri da percorrere:"));
 
-console.log('km', km, typeof km)
+// Input Calcola 
+const calcButton = document.getElementById('calc-button');
 
-let pricexKm = 0.21;
-let totalPrice = km * pricexKm;
+console.log('calcButton', calcButton, typeof calcButton);
 
-if(isNaN(km)){
-  alert('Ti avevo detto di inserire un numero')
-}
-else if(km <= 0){
-  alert('Inserisci un numero maggiore di 0')
-}
-else{
+// Input Form 
+const calcForm = document.getElementById('calc-form');
 
-    // Chiedi all'utente l'età del passeggero
-  const age = parseInt (prompt("Inserisci l'età del passeggero:"));
+console.log('calcForm', calcForm, typeof calcForm);
 
-  console.log('age', age, typeof age)
-  if (isNaN(age)){
-    alert('Inserisci un numero valido in cifre numeriche')
-  }
-  else if (age < 18) {
-    // Sconto del 20% per i minorenni
-    totalPrice = totalPrice * 0.8;
-  } else if (age > 65) {
-    // Sconto del 40% per gli over 65
-    totalPrice = totalPrice * 0.6;
-  }
-}
 
-// Prezzo totale
-console.log("Il prezzo del biglietto è: " + totalPrice.toFixed(2) + "€", typeof totalPrice);
 
-const ticketPrice = document.getElementById('ticketPrice-container')
+calcForm.addEventListener('submit', function(argomento){
 
-console.log('ticketPrice-container', ticketPrice)
+    console.log('Evento', argomento, typeof argomento);
+    argomento.preventDefault();
 
-const previousText = ticketPrice.innerHTML;
+    // Input Km
+    let km = document.getElementById('km').value;
+    km = parseInt(km);
+    console.log('km', km, typeof km);
 
-console.log('previousText', previousText);
+    // Input Age
+    let age = document.getElementById('age').value;
+    // age = parseInt(age);
+    console.log('age', age, typeof age);
 
-// Biglietto Finale
-ticketPrice.innerHTML = previousText + totalPrice.toFixed(2) + '€';
+    let pricexKm = 0.21;
+    let totalPrice = km * pricexKm;
+
+         if (age = 'underage') {
+          // Sconto del 20% per i minorenni
+          totalPrice = totalPrice * 0.8;
+        } else if (age = 'over') {
+          // Sconto del 40% per gli over 65
+          totalPrice = totalPrice * 0.6;
+        }
+
+    console.log('totalPrice', totalPrice, typeof totalPrice)
+    console.log('totalPrice Formattato', totalPrice.toFixed(2))
+    document.querySelector('.contenitore-prezzo').innerHTML = totalPrice.toFixed(2);
+});
